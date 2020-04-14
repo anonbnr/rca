@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ecore:EPackage xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" name="rca" nsURI="http://www.example.org/rca" nsPrefix="rca">
+  <eClassifiers xsi:type="ecore:EClass" name="Attribute" abstract="true" eSuperTypes="#//PairableElement">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Pair" abstract="true">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="first" lowerBound="1" eType="#//PairableElement"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="second" lowerBound="1"
+        eType="#//PairableElement" containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="RRelation" eSuperTypes="#//Relation">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="rPairs" lowerBound="1"
+        upperBound="-1" eType="#//RPair" containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="RPair" eSuperTypes="#//Pair">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="rSourceObject" lowerBound="1"
+        eType="#//Object" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="rTargetObject" lowerBound="1"
+        eType="#//Object" containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="FContext" eSuperTypes="#//Context">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="fRelation" lowerBound="1"
+        eType="#//FRelation" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="attributeSet" lowerBound="1"
+        eType="#//AttributeSet" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="objectSet" lowerBound="1"
+        eType="#//ObjectSet" containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Relation" abstract="true" eSuperTypes="#//Set">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="pairs" lowerBound="1" upperBound="-1"
+        eType="#//Pair" containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="AttributeSet" eSuperTypes="#//Set">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="attributes" lowerBound="1"
+        upperBound="-1" eType="#//Attribute" containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="FAttribute" eSuperTypes="#//Attribute"/>
+  <eClassifiers xsi:type="ecore:EClass" name="RCF">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="contexts" lowerBound="1"
+        upperBound="-1" eType="#//Context" containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="RContext" eSuperTypes="#//Context">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="rRelation" lowerBound="1"
+        eType="#//RRelation" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="targetObjectSet" lowerBound="1"
+        eType="#//ObjectSet" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="sourceObjectSet" lowerBound="1"
+        eType="#//ObjectSet" containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Context" abstract="true">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="source" lowerBound="1"
+        eType="#//Set" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="target" lowerBound="1"
+        eType="#//Set" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="relation" lowerBound="1"
+        eType="#//Relation" containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="FPair" eSuperTypes="#//Pair">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="fAttribute" lowerBound="1"
+        eType="#//FAttribute" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="fObject" lowerBound="1"
+        eType="#//Object" containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="ObjectSet" eSuperTypes="#//Set">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="objects" lowerBound="1"
+        upperBound="-1" eType="#//Object" containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="FRelation" eSuperTypes="#//Relation">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="fPairs" lowerBound="1"
+        upperBound="-1" eType="#//FPair" containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="PairableElement" abstract="true"/>
+  <eClassifiers xsi:type="ecore:EClass" name="Set" abstract="true"/>
+  <eClassifiers xsi:type="ecore:EClass" name="Object" eSuperTypes="#//PairableElement">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+  </eClassifiers>
+</ecore:EPackage>
